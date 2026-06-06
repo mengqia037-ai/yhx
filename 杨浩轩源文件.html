@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨浩轩信息</title>
+    <!-- 引入图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 页面基础样式 */
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: #091236;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* 大屏容器 */
+        .screen-container {
+            width: 100vw;
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 标题样式 */
+        .screen-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #4fc3f7, #64ffda);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
+        }
+
+        /* 主内容布局 */
+        .main-content {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+        }
+
+        /* 左侧面板 */
+        .left-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 中间面板 */
+        .center-panel {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 右侧面板 */
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 卡片通用样式 */
+        .card {
+            background: rgba(17, 25, 58, 0.8);
+            border: 1px solid #2a3669;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(79, 195, 247, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 卡片装饰边框 */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 40px;
+            background: linear-gradient(to bottom, #4fc3f7, #64ffda);
+        }
+
+        /* 卡片标题 */
+        .card-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #4fc3f7;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 人员信息卡片 */
+        .person-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .person-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #4fc3f7;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
+        }
+
+        .person-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .person-position {
+            font-size: 16px;
+            color: #64ffda;
+            margin-bottom: 20px;
+        }
+
+        .info-list {
+            width: 100%;
+            text-align: left;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #2a3669;
+        }
+
+        .info-label {
+            color: #a0aec0;
+        }
+
+        /* 人员简介卡片 */
+        .person-desc {
+            flex: 2;
+        }
+
+        .desc-content {
+            line-height: 2;
+            font-size: 15px;
+            color: #e2e8f0;
+            text-align: justify;
+        }
+
+        /* 统计卡片 */
+        .stats-card {
+            flex: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(26, 35, 71, 0.6);
+            border-radius: 6px;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #64ffda;
+            margin: 5px 0;
+        }
+
+        .stat-text {
+            font-size: 14px;
+            color: #a0aec0;
+        }
+
+        /* 动画效果 */
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(79, 195, 247, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(79, 195, 247, 0.4); }
+        }
+
+        .card {
+            animation: glow 3s infinite;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 1200px) {
+            .main-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="screen-container">
+        <!-- 大屏标题 -->
+        <h1 class="screen-title">
+            <i class="fas fa-users"></i> 人员信息可视化展示大屏
+        </h1>
+
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <!-- 左侧面板 -->
+            <div class="left-panel">
+                <!-- 人员信息卡片 -->
+                <div class="card person-info">
+                    <h3 class="card-title"><i class="fas fa-id-card"></i> 人员基本信息</h3>
+                    <img src="https://picsum.photos/200/200?random=1" alt="人员头像" class="person-avatar">
+                    <div class="person-name">杨浩轩</div>
+                    <div class="person-position">xx中学学生</div>
+                    
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-label">人员信息：</span>
+                            <span>EMP-2024001</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">所属户籍</span>
+                            <span>赤峰市宁城县xx镇</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">出生时间：</span>
+                            <span>2011-0x-xx</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">联系电话：</span>
+                            <span>暂且未知</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">当前状态：</span>
+                            <span style="color:#64ffda">活跃</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中间面板 -->
+            <div class="center-panel">
+                <!-- 人员简介卡片 -->
+                <div class="card person-desc">
+                    <h3 class="card-title"><i class="fas fa-file-alt"></i> 人员详细简介</h3>
+                    <div class="desc-content">
+                        杨浩轩是一位网红和国家一级美术师，因其在社交媒体上的影响力和艺术成就而受到关注。<br />
+						杨浩轩（milton）是一名网红，1999年出生，曾在抖音上拥有近百万粉丝。他以分享日常生活和正能量内容而闻名，吸引了大量关注。与张凯毅的恋情引发了广泛讨论，成为热门话题，甚至有传闻称两人疑似订婚 
+						
+						
+					
+						
+						艺术成就
+						杨浩轩还是一位国家一级美术师和高级书画风水策划师。他自幼热爱国学和书画，经过多年的努力，成为军旅书画家中的新锐人物。他在书画领域的成就使他在艺术界获得了一定的认可 
+						
+					
+						
+						
+						商业合作
+						杨浩轩与韩肖磊为商业合作伙伴，涉及多个项目的合作，显示了他在商业领域的活跃度 
+						
+						
+						抖音活动
+						在抖音平台上，杨浩轩发布了124个作品，积累了9.7万粉丝和414.1万的点赞量，展现了他在社交媒体上的影响力和创作能力 
+						
+						。
+						杨浩轩的多重身份使他在社交媒体和艺术界都备受瞩目，未来的发展值得关注。
+						<a href="https://cn.bing.com/search?q=%E6%9D%A8%E6%B5%A9%E8%BD%A9%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B&qs=n&form=QBRE&sp=-1&lq=0&pq=%E6%9D%A8%E6%B5%A9%E8%BD%A9%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B&sc=8-7&sk=&cvid=7B8151ED6D2F4E2A94FADB6FF22CFC76">跳转</a>
+						本网页是虚构的，如有侵权请联系站主
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧面板 -->
+            <div class="right-panel">
+                <!-- 工作统计卡片 -->
+                <div class="card stats-card">
+                    <h3 class="card-title"><i class="fas fa-chart-bar"></i> 工作统计</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <i class="fas fa-project-diagram" style="color:#4fc3f7; font-size:20px;"></i>
+                            <div class="stat-number">初中</div>
+                            <div class="stat-text">完成学业</div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-tasks" style="color:#64ffda; font-size:20px;"></i>
+                            <div class="stat-number">九年级</div>
+                            <div class="stat-text">在校年级</div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-award" style="color:#ffd54f; font-size:20px;"></i>
+                            <div class="stat-number">114514</div>
+                            <div class="stat-text">优秀学生</div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock" style="color:#ff7043; font-size:20px;"></i>
+                            <div class="stat-number">150429201xxxxxxxxx</div>
+                            <div class="stat-text">身份证号</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
